@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사이트 디자인 1안</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .modal {width: 100%; height: 100%; position: fixed; top: 0; left: 0; justify-content: center; align-items: center; display: flex; background: rgba(0, 0, 0, 0.5);}
+        .modal_body {background-color: #ffff; position: absolute; height: 35rem; width: 30rem; text-align:center;}
+        .modal.hidden {display: none;}
+        .modalCloseButton{text-align: end;margin: 20px;}
+        .button{background-color: rgb(175, 175, 175); padding: 10px; border-radius: 5px;}
+        .input{border: black solid 3px;}
+    </style>
+</head>
+<body class="bg-gray-50">
+<!-- 사례 1: 대시보드 중심 레이아웃 -->
+<div class="max-w-7xl mx-auto p-8">
+    <!-- 헤더 섹션 -->
+    <header class="flex items-center justify-between mb-12">
+        <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            SmartTools Pro
+        </h1>
+        <div class="flex items-center space-x-4">
+            <div class="relative group">
+                <button class="p-2 hover:bg-gray-100 rounded-full">
+                    🔔<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+                <div class="hidden group-hover:block absolute right-0 w-72 bg-white shadow-xl p-4 rounded-lg">
+                    <h3 class="font-semibold mb-2">알림 (3)</h3>
+                    <div class="text-sm space-y-2">
+                        <div class="p-2 hover:bg-gray-50 rounded">새로운 업데이트 가능</div>
+                        <div class="p-2 hover:bg-gray-50 rounded">미완료된 계산서 2건</div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">👤</div>
+        </div>
+    </header>
+
+    <!-- 주요 기능 그리드 -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
+            <h3 class="text-lg font-semibold mb-2">실시간 급여 계산</h3>
+            <p class="text-gray-600">월 소득 입력만으로 공제액 자동 계산</p>
+            <div class="mt-4 bg-gray-50 p-4 rounded-lg">
+                <p class="text-sm">예시: 월 350만원 → 공제액 23.5만원</p>
+            </div>
+        </div>
+        
+        <!-- 추가 기능 카드 -->
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 bg-green-100 rounded-lg mb-4 flex items-center justify-center">📈</div>
+            <h3 class="text-lg font-semibold mb-2">데이터 분석</h3>
+            <p class="text-gray-600">최근 3개월 지출 추이 시각화</p>
+            <div class="mt-4 h-32 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg"></div>
+        </div>
+
+        <!-- BMI 계산기 -->
+        <div id="BMIModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
+            <h3 class="text-lg font-semibold mb-2">BMI 계산기</h3>
+            <p class="text-gray-600">키(cm), 몸무게(kg) 입력</p>
+        </div>
+
+        <!-- BMR 계산기-->
+        <div id="BMRModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
+            <h3 class="text-lg font-semibold mb-2">BMR 계산기</h3>
+            <p class="text-gray-600">키(cm), 몸무게(kg), 성별, 나이(만) 입력</p>
+        </div>
+
+        <!-- 칼로리 계산기 -->
+        <div id="CalorieModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
+            <h3 class="text-lg font-semibold mb-2">칼로리 계산기</h3>
+            <p class="text-gray-600">체중(kg), 시간(분) 입력</p>
+        </div>
+
+        <!-- 가임기 계산기 -->
+        <div id="ChildbearingPeriodModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
+            <h3 class="text-lg font-semibold mb-2">가임기 계산기</h3>
+            <p class="text-gray-600">마지막 생리, 생리주기</p>
+        </div>
+
+        <!-- 정상체중 계산기 -->
+        <div id="NormalWeightModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
+            <h3 class="text-lg font-semibold mb-2">정상체중 계산기</h3>
+            <p class="text-gray-600">키만 입력</p>
+        </div>
+
+        <!-- 목표 심박수 계산기-->
+        <div id="TargetHeartRateModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
+            <h3 class="text-lg font-semibold mb-2"> 목표 심박수 계산기</h3>
+            <p class="text-gray-600">나이만 입력</p>
+        </div>
+    </div>
+</div>
+
+<!-- 사례 2: 세부 도구 실행 화면 -->
+<div class="max-w-4xl mx-auto p-8 bg-white shadow-inner">
+    <!-- 단계 표시기 -->
+    <div class="flex items-center space-x-4 mb-8">
+        <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center">1</div>
+        <div class="flex-1 h-px bg-gray-200"></div>
+        <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">2</div>
+    </div>
+
+    <!-- 입력 폼 섹션 -->
+    <div class="space-y-6">
+        <div>
+            <label class="block text-sm font-medium mb-2">월 소득 (만원)</label>
+            <div class="relative">
+                <input type="number" 
+                       class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 transition-all"
+                       placeholder="예: 350">
+                <span class="absolute right-3 top-3.5 text-gray-500">만원</span>
+            </div>
+            <p class="mt-2 text-sm text-blue-600">💡 평균 월급은 320만원입니다</p>
+        </div>
+
+        <!-- 실시간 계산 결과 -->
+        <div class="bg-blue-50 p-4 rounded-lg">
+            <div class="flex justify-between items-center">
+                <span class="font-medium">예상 세금</span>
+                <span class="text-2xl font-bold text-blue-600">₩235,000</span>
+            </div>
+        </div>
+
+        <!-- 도움말 섹션 -->
+        <div class="border-l-4 border-blue-600 pl-4">
+            <h4 class="font-medium mb-2">자주 묻는 질문</h4>
+            <div class="space-y-2 text-sm">
+                <p class="hover:text-blue-600 cursor-pointer">비과세 항목은 어떻게 처리되나요?</p>
+                <p class="hover:text-blue-600 cursor-pointer">4대 보험 계산법이 궁금해요</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- UX 개선점 비교 분석 -->
+<div class="max-w-4xl mx-auto p-8 mt-12">
+    <h2 class="text-2xl font-bold mb-6">aaaaa</h2>
+    <div class="grid grid-cols-2 gap-8">
+        <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+                <div class="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">✓</div>
+                <div>
+                    <h3 class="font-medium">bbbb</h3>
+                    <p class="text-sm text-gray-600">cccc</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-3">
+                <div class="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">⏱</div>
+                <div>
+                    <h3 class="font-medium">dddd</h3>
+                    <p class="text-sm text-gray-600">eeee</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+                <div class="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">🎨</div>
+                <div>
+                    <h3 class="font-medium">ffff</h3>
+                    <p class="text-sm text-gray-600">gggg</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-3">
+                <div class="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">📱</div>
+                <div>
+                    <h3 class="font-medium">hhh</h3>
+                    <p class="text-sm text-gray-600">iiii</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- BMI 모달창 -->
+ <div id="BMIModal" class="hidden modal">
+    <div class="modal_body">
+        <button id="BMIModalCloseButton" class="button modalCloseButton">X</button>
+        <h2 class="text-lg font-semibold mb-2">BMI 계산기</h2>
+        <div>
+            <p>키</p><input type="text" id="BMIHeight" class="input" placeholder="m 기준">
+            <br>
+            <p>몸무게</p><input type="text" id="BMIWeight" class="input" placeholder="kg 기준">
+        </div>
+        <button id="BMICalculateButton" class="button">계산</button>
+    </div>
+ </div>
+
+ <!-- BMR 모달창 -->
+ <div id="BMRModal" class="hidden modal">
+    <div class="modal_body">
+        <button id="BMRModalCloseButton" class="button modalCloseButton">X</button>
+        <h2 class="text-lg font-semibold mb-2">BMR 계산기</h2>
+        <div>
+            <p>키</p><input type="text" id="BMRHeight" class="input" placeholder="cm 기준">
+            <br>
+            <p>몸무게</p><input type="text" id="BMRWeight" class="input" placeholder="kg 기준">
+            <br>
+            <p>나이</p><input type="text" placeholder="만 나이 기준" id="BMRAge" class="input">
+            <br>
+            <p>성별</p><input type="radio" name="gender" value="male">남<input type="radio" name="gender" value="female">여
+
+        </div>
+        <button id="BMRCalculateButton" class="button">계산</button>
+    </div>
+ </div>
+
+ <!-- 칼로리 계산 모달창-->
+ <div id="CalorieModal" class="hidden modal">
+    <div class="modal_body">
+        <button id="CalorieModalCloseButton" class="button modalCloseButton">X</button>
+        <h2 class="text-lg font-semibold mb-2">칼로리 계산기</h2>
+        <div>
+            <p>몸무게</p><input type="text" id="CalorieWeight" class="input" placeholder="kg 기준">
+            <br>
+            <p>운동시간</p><input type="text" placeholder="분 기준" id="CalorieTime" class="input">
+            <br>
+            <p>종목</p>
+            <input type="radio" name="excersise" value="running">달리기
+            <input type="radio" name="excersise" value="step">계단
+            <input type="radio" name="excersise" value="swimming">수영
+            <input type="radio" name="excersise" value="cycle">자전거
+            <input type="radio" name="excersise" value="jumping">줄넘기
+
+        </div>
+        <button id="CalorieCalculateButton" class="button">계산</button>
+    </div>
+ </div>
+
+ <!-- 가임기 계산기 -->
+ <div id="ChildbearingPeriodModal" class="hidden modal">
+    <div class="modal_body">
+        <button id="ChildbearingPeriodModalCloseButton" class="button modalCloseButton">X</button>
+        <h2 class="text-lg font-semibold mb-2">가임기 계산기</h2>
+        <div>
+            <p>마지막 생리일</p><input type="date" id="LastChildbearingPeriod" class="input">
+            <br>
+            <p>생리주기</p><input type="text" placeholder="일 기준" id="ChildbearingPeriod" class="input">
+        </div>
+        <button id="ChildbearingPeriodCalculateButton" class="button">계산</button>
+    </div>
+ </div>
+
+ <!-- 정상체중 계산기 -->
+ <div id="NormalWeightModal" class="hidden modal">
+    <div class="modal_body">
+        <button id="NormalWeightModalCloseButton" class="button modalCloseButton">X</button>
+        <h2 class="text-lg font-semibold mb-2">정상체중 계산기</h2>
+        <div>
+            <p>키</p><input type="number" id="NormalWeightHeight" class="input" placeholder="cm 기준">
+        </div>
+        <button id="NormalWeightCalculateButton" class="button">계산</button>
+    </div>
+ </div>
+
+ <!-- 목표 심박수 계산기 -->
+ <div id="TargetHeartRateModal" class="hidden modal">
+    <div class="modal_body">
+        <button id="TargetHeartRateModalCloseButton" class="button modalCloseButton">X</button>
+        <h2 class="text-lg font-semibold mb-2">목표 심박수 계산기</h2>
+        <div>
+            <p>나이</p><input type="text" id="TargerHeartRateAge" class="input" placeholder="만 기준">
+        </div>
+        <button id="TargetHeartRateCalculateButton" class="button">계산</button>
+    </div>
+ </div>
+</body>
+<script type="module" th:src="@{/macgyber.js}"></script>
+</html>

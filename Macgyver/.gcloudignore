@@ -1,0 +1,27 @@
+# GCP Cloud Build에서 제외할 항목들
+
+# Git 관련
+.git
+.gitignore
+
+# IDE 설정 파일
+*.iml
+.idea/
+
+# 로그 파일
+*.log
+
+# Gradle 캐시
+.gradle/
+build/
+
+# 테스트 리포트 등 불필요한 아티팩트
+out/
+test-output/
+
+# 운영에 필요 없는 기타 파일
+*.env
+.DS_Store
+
+# GCP 관련
+.gcloudignore

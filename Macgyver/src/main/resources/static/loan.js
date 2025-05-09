@@ -7,6 +7,9 @@ export function calculateLoanPayment(loanAmount, interestRate, period) {
   
     const totalPayment = monthlyPayment * period;
     const totalInterest = totalPayment - loanAmount;
+    console.log('월납입금'+Math.round(monthlyPayment));
+    console.log('총납부금'+Math.round(totalPayment));
+    console.log('총이자'+Math.round(totalInterest))
   
     return {
       monthlyPayment: Math.round(monthlyPayment),// 월납입금

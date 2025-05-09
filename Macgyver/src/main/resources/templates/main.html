@@ -101,6 +101,48 @@
             <h3 class="text-lg font-semibold mb-2"> 목표 심박수 계산기</h3>
             <p class="text-gray-600">나이만 입력</p>
         </div>
+
+        <!-- 나이 계산기-->
+        <div id="AgeModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
+            <h3 class="text-lg font-semibold mb-2"> 나이 계산기</h3>
+            <p class="text-gray-600">나이만 입력</p>
+        </div>
+
+        <!-- 재료 배율 계산기
+        <div id="CookingRatioModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
+            <h3 class="text-lg font-semibold mb-2"> 재료 배율 계산기</h3>
+            <p class="text-gray-600">오이시쿠나레 모에모에 큥♥</p>
+        </div>
+        -->
+        <!-- 날짜 계산기
+        <div id="DayModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
+            <h3 class="text-lg font-semibold mb-2"> 날짜 계산기</h3>
+            <p class="text-gray-600">날짜 입력</p>
+        </div>
+        -->
+        <!-- 거리 계산기-->
+        <div id="DistanceModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
+            <h3 class="text-lg font-semibold mb-2"> 거리 계산기</h3>
+            <p class="text-gray-600">대신 계산해드려요</p>
+        </div>
+
+        <!-- 이자 계산기-->
+        <div id="LoanModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
+            <h3 class="text-lg font-semibold mb-2"> 이자 계산기</h3>
+            <p class="text-gray-600">돈내놔</p>
+        </div>
+
+        <!-- 온도 변환 계산기-->
+        <div id="TempConversionModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
+            <h3 class="text-lg font-semibold mb-2"> 온도 변환 계산기</h3>
+            <p class="text-gray-600">아직 콘솔만 뜸</p>
+        </div>
     </div>
 </div>
 
@@ -114,6 +156,7 @@
     </div>
 
     <!-- 입력 폼 섹션 -->
+    <!-- 모달로 처리하니 필요없지않나요? -순- -->
     <div class="space-y-6">
         <div>
             <label class="block text-sm font-medium mb-2">월 소득 (만원)</label>
@@ -189,13 +232,15 @@
  <div id="BMIModal" class="hidden modal">
     <div class="modal_body">
         <button id="BMIModalCloseButton" class="button modalCloseButton">X</button>
-        <h2 class="text-lg font-semibold mb-2">BMI 계산기</h2>
-        <div>
-            <p>키</p><input type="text" id="BMIHeight" class="input" placeholder="m 기준">
-            <br>
-            <p>몸무게</p><input type="text" id="BMIWeight" class="input" placeholder="kg 기준">
-        </div>
-        <button id="BMICalculateButton" class="button">계산</button>
+        <form action="" method="get" id="BMIForm" onsubmit="return false;">
+            <h2 class="text-lg font-semibold mb-2">BMI 계산기</h2>
+            <div>
+                <p>키</p><input type="text" id="BMIHeight" class="input" placeholder="m 기준">
+                <br>
+                <p>몸무게</p><input type="text" id="BMIWeight" class="input" placeholder="kg 기준">
+            </div>
+            <button id="BMICalculateButton" class="button">계산</button>
+        </form>
     </div>
  </div>
 
@@ -203,18 +248,21 @@
  <div id="BMRModal" class="hidden modal">
     <div class="modal_body">
         <button id="BMRModalCloseButton" class="button modalCloseButton">X</button>
-        <h2 class="text-lg font-semibold mb-2">BMR 계산기</h2>
-        <div>
-            <p>키</p><input type="text" id="BMRHeight" class="input" placeholder="cm 기준">
-            <br>
-            <p>몸무게</p><input type="text" id="BMRWeight" class="input" placeholder="kg 기준">
-            <br>
-            <p>나이</p><input type="text" placeholder="만 나이 기준" id="BMRAge" class="input">
-            <br>
-            <p>성별</p><input type="radio" name="gender" value="male">남<input type="radio" name="gender" value="female">여
-
-        </div>
-        <button id="BMRCalculateButton" class="button">계산</button>
+        <form action="" method="get" id="BMRForm" onsubmit="return false;">
+            <h2 class="text-lg font-semibold mb-2">BMR 계산기</h2>
+            <div>
+                <p>키</p><input type="text" id="BMRHeight" class="input" placeholder="cm 기준">
+                <br>
+                <p>몸무게</p><input type="text" id="BMRWeight" class="input" placeholder="kg 기준">
+                <br>
+                <p>나이</p><input type="text" placeholder="만 나이 기준" id="BMRAge" class="input">
+                <br>
+                <p>성별</p>
+                <input type="radio" name="gender" value="male">남
+                <input type="radio" name="gender" value="female">여
+            </div>
+            <button id="BMRCalculateButton" class="button">계산</button>
+        </form>
     </div>
  </div>
 
@@ -222,61 +270,164 @@
  <div id="CalorieModal" class="hidden modal">
     <div class="modal_body">
         <button id="CalorieModalCloseButton" class="button modalCloseButton">X</button>
-        <h2 class="text-lg font-semibold mb-2">칼로리 계산기</h2>
-        <div>
-            <p>몸무게</p><input type="text" id="CalorieWeight" class="input" placeholder="kg 기준">
-            <br>
-            <p>운동시간</p><input type="text" placeholder="분 기준" id="CalorieTime" class="input">
-            <br>
-            <p>종목</p>
-            <input type="radio" name="excersise" value="running">달리기
-            <input type="radio" name="excersise" value="step">계단
-            <input type="radio" name="excersise" value="swimming">수영
-            <input type="radio" name="excersise" value="cycle">자전거
-            <input type="radio" name="excersise" value="jumping">줄넘기
-
-        </div>
-        <button id="CalorieCalculateButton" class="button">계산</button>
+        <form action="" method="get" id="CalorieForm" onsubmit="return false;">
+            <h2 class="text-lg font-semibold mb-2">칼로리 계산기</h2>
+            <div>
+                <p>몸무게</p><input type="text" id="CalorieWeight" class="input" placeholder="kg 기준">
+                <br>
+                <p>운동시간</p><input type="text" placeholder="분 기준" id="CalorieTime" class="input">
+                <br>
+                <p>종목</p>
+                <input type="radio" name="excersise" value="running">달리기
+                <input type="radio" name="excersise" value="step">계단
+                <input type="radio" name="excersise" value="swimming">수영
+                <input type="radio" name="excersise" value="cycle">자전거
+                <input type="radio" name="excersise" value="jumping">줄넘기
+    
+            </div>
+            <button id="CalorieCalculateButton" class="button">계산</button>
+        </form>
     </div>
  </div>
 
- <!-- 가임기 계산기 -->
+ <!-- 가임기 계산기 모달창 -->
  <div id="ChildbearingPeriodModal" class="hidden modal">
     <div class="modal_body">
         <button id="ChildbearingPeriodModalCloseButton" class="button modalCloseButton">X</button>
-        <h2 class="text-lg font-semibold mb-2">가임기 계산기</h2>
-        <div>
-            <p>마지막 생리일</p><input type="date" id="LastChildbearingPeriod" class="input">
-            <br>
-            <p>생리주기</p><input type="text" placeholder="일 기준" id="ChildbearingPeriod" class="input">
-        </div>
-        <button id="ChildbearingPeriodCalculateButton" class="button">계산</button>
+        <form action="" method="get" id="ChildbearingPeriodForm" onsubmit="return false;">
+            <h2 class="text-lg font-semibold mb-2">가임기 계산기</h2>
+            <div>
+                <p>마지막 생리일</p><input type="date" id="LastChildbearingPeriod" class="input">
+                <br>
+                <p>생리주기</p><input type="text" placeholder="일 기준" id="ChildbearingPeriod" class="input">
+            </div>
+            <button id="ChildbearingPeriodCalculateButton" class="button">계산</button>
+        </form>
     </div>
  </div>
 
- <!-- 정상체중 계산기 -->
+ <!-- 정상체중 계산기 모달창 -->
  <div id="NormalWeightModal" class="hidden modal">
     <div class="modal_body">
         <button id="NormalWeightModalCloseButton" class="button modalCloseButton">X</button>
-        <h2 class="text-lg font-semibold mb-2">정상체중 계산기</h2>
-        <div>
-            <p>키</p><input type="number" id="NormalWeightHeight" class="input" placeholder="cm 기준">
-        </div>
-        <button id="NormalWeightCalculateButton" class="button">계산</button>
+        <form action="" method="get" id="NormalWeightForm" onsubmit="return false;">
+            <h2 class="text-lg font-semibold mb-2">정상체중 계산기</h2>
+            <div>
+                <p>키</p><input type="number" id="NormalWeightHeight" class="input" placeholder="cm 기준">
+            </div>
+            <button id="NormalWeightCalculateButton" class="button">계산</button>
+        </form>
     </div>
  </div>
 
- <!-- 목표 심박수 계산기 -->
+ <!-- 목표 심박수 계산기 모달창 -->
  <div id="TargetHeartRateModal" class="hidden modal">
     <div class="modal_body">
         <button id="TargetHeartRateModalCloseButton" class="button modalCloseButton">X</button>
-        <h2 class="text-lg font-semibold mb-2">목표 심박수 계산기</h2>
-        <div>
-            <p>나이</p><input type="text" id="TargerHeartRateAge" class="input" placeholder="만 기준">
-        </div>
-        <button id="TargetHeartRateCalculateButton" class="button">계산</button>
+        <form action="" method="get" id="TargetHeartRateForm" onsubmit="return false;">
+            <h2 class="text-lg font-semibold mb-2">목표 심박수 계산기</h2>
+            <div>
+                <p>나이</p><input type="text" id="TargerHeartRateAge" class="input" placeholder="만 기준">
+            </div>
+            <button id="TargetHeartRateCalculateButton" class="button">계산</button>
+        </form>
     </div>
  </div>
+
+ <!-- 나이 계산기 모달창 -->
+    <div id="AgeModal" class="hidden modal">
+        <div class="modal_body">
+            <button id="AgeModalCloseButton" class="button modalCloseButton">X</button>
+            <form action="" method="get" id="AgeForm" onsubmit="return false;">
+                <h2 class="text-lg font-semibold mb-2">나이 계산기</h2>
+                <div>
+                    <p>태어난 년도</p><input type="number" id="birth" class="input" placeholder="예시 : 2000">
+                </div>
+                <button id="AgeCalculateButton" class="button">계산</button>
+            </form>
+        </div>
+    </div>
+
+
+ <!-- 재료 비율 계산기 모달창
+ <form action="" method="get" id="CookingRatioForm" onsubmit="return false;">
+    <div id="CookingRatioModal" class="hidden modal">
+        <div class="modal_body">
+            <button id="CookingRatioModalCloseButton" class="button modalCloseButton">X</button>
+            <h2 class="text-lg font-semibold mb-2">재료 비율 계산기</h2>
+            <div>
+                <p>총량</p><input type="number" id="" class="input" placeholder="g 기준">
+            </div>
+            <button id="CookingRatioCalculateButton" class="button">계산</button>
+        </div>
+    </div>
+ </form>
+ -->
+ <!-- 날짜 계산기 모달창 
+ <form action="" method="get" id="DayForm" onsubmit="return false;">
+    <div id="DayModal" class="hidden modal">
+        <div class="modal_body">
+            <button id="DayModalCloseButton" class="button modalCloseButton">X</button>
+            <h2 class="text-lg font-semibold mb-2">날짜 계산기</h2>
+            <div>
+                <p>시작일</p><input type="date" id="Day" class="input">
+            </div>
+            <button id="DayCalculateButton" class="button">계산</button>
+        </div>
+    </div>
+ </form>
+-->
+ <!-- 거리 계산기 -->
+ 
+    <div id="DistanceModal" class="hidden modal">
+        <div class="modal_body">
+            <button id="DistanceModalCloseButton" class="button modalCloseButton">X</button>
+            <form action="" method="get" id="DistanceForm" onsubmit="return false;">
+                <h2 class="text-lg font-semibold mb-2">거리 계산기</h2>
+                <div>
+                    <p>시작점 x좌표</p><input type="number" id="DistanceX1" class="input">
+                    <p>시작점 y좌표</p><input type="number" id="DistanceY1" class="input">
+                    <p>끝점 x좌표</p><input type="number" id="DistanceX2" class="input">
+                    <p>끝점 y좌표</p><input type="number" id="DistanceY2" class="input">
+                </div>
+                <button id="DistanceCalculateButton" class="button">계산</button>
+            </form>
+        </div>
+    </div>
+
+
+ <!-- 이자 계산기 -->
+    <div id="LoanModal" class="hidden modal">
+        <div class="modal_body">
+            <button id="LoanModalCloseButton" class="button modalCloseButton">X</button>
+            <form action="" method="get" id="LoanForm" onsubmit="return false;">
+                <h2 class="text-lg font-semibold mb-2">거리 계산기</h2>
+                <div>
+                    <p>금액</p><input type="number" id="loanAmount" class="input">
+                    <p>기간</p><input type="number" id="period" class="input">
+                    <p>이자율</p><input type="number" id="interestRate" class="input">
+                </div>
+                <button id="LoanCalculateButton" class="button">계산</button>
+            </form>
+        </div>
+    </div>
+
+
+ <!-- 온도 변환 계산기 모달창 -->
+    <div id="TempConversionModal" class="hidden modal">
+        <div class="modal_body">
+            <button id="TempConversionModalCloseButton" class="button modalCloseButton">X</button>
+            <form action="" method="get" id="TempConversionForm" onsubmit="return false;">
+                <h2 class="text-lg font-semibold mb-2">온도 변환 계산기</h2>
+                <div>
+                    <p>온도</p><input type="number" id="TempConversion" class="input">
+                    <p>단위</p><input type="radio" name="Temp" value="C">C<input type="radio" name="Temp" value="F">F
+                </div>
+                <button id="TempConversionCalculateButton" class="button">계산</button>
+            </form>
+        </div>
+    </div>
+
 </body>
 <script type="module" th:src="@{/macgyber.js}"></script>
 </html>

@@ -1,9 +1,7 @@
 // 칼로리 소모량 계산기
-export function calorieConsumptionMeters(){
+export function calorieConsumptionMeters(excersise, weight, exerciseTime){
     let consumeCalorie;
-    const excersise = document.querySelector('input[type=radio][name="excersise"]:checked').value;
-    const weight = parseInt(document.getElementById('CalorieWeight').value);
-    const exerciseTime =parseInt(document.getElementById('CalorieTime').value); // 분
+
 
     if(excersise === 'running'){
         consumeCalorie = parseInt(weight * exerciseTime * 0.1225);

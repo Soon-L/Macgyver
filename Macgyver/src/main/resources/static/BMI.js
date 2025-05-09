@@ -1,8 +1,4 @@
-export function BMI(){
-
-    // 사용자 입력값 가져오기
-    let weight = parseInt(document.getElementById('BMIWeight').value); // kg
-    let height = parseFloat(document.getElementById('BMIHeight').value)/100; // m
+export function BMI(weight, height){
 
     // 예외처리
     if (isNaN(weight) || isNaN(height) || height <= 0) {

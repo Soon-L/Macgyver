@@ -1,7 +1,7 @@
 // 입력창 :  나이(만나이)
 
-export function targetHeartRate(){
-    const age = parseInt(document.getElementById('TargerHeartRateAge').value);
+export function targetHeartRate(age){
+    
     let maxHeartRate = 220 - age;
     let minTarget = (maxHeartRate * 50 / 100).toFixed(0);
     let maxTarget = (maxHeartRate * 85 / 100).toFixed(0);

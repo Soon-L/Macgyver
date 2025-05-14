@@ -1,13 +1,14 @@
-import { BMI } from './BMI.js'; // BMI 계산기
-import { BMR } from './BMR.js'; // BMR 계산기
-import { calorieConsumptionMeters } from './calorieConsumptionMeters.js'; // 칼로리 계산기
-import { childbearingPeriod } from './childbearingPeriod.js'; // 가임기 계산기
-import { normalWeight } from './normalWeight.js'; // 정상체중 계산기
-import { targetHeartRate } from './targetHeartRate.js'; // 목표 심박수 계산기
-import { getAge } from './age.js'; // 나이 계산기
-import { getDistance } from './distance.js'; // 거리 계산기
-import { calculateLoanPayment } from './loan.js'; // 이자 계산기
-import { tempConversion } from './tempConversion.js'; // 온도 변환 계산기
+import {BMI} from './BMI.js'; // BMI 계산기
+import {BMR} from './BMR.js'; // BMR 계산기
+import {calorieConsumptionMeters} from './calorieConsumptionMeters.js'; // 칼로리 계산기
+import {childbearingPeriod} from './childbearingPeriod.js'; // 가임기 계산기
+import {normalWeight} from './normalWeight.js'; // 정상체중 계산기
+import {targetHeartRate} from './targetHeartRate.js'; // 목표 심박수 계산기
+import {getAge} from './age.js'; // 나이 계산기
+import {getDistance} from './distance.js'; // 거리 계산기
+import {calculateLoanPayment} from './loan.js'; // 이자 계산기
+import {tempConversion} from './tempConversion.js'; // 온도 변환 계산기
+import { getIp } from './ipconfig.js';
 
 
 
@@ -325,4 +326,27 @@ document.getElementById('LoanForm').addEventListener('submit', (e) => {
 
     calculateLoanPayment(loanAmount, interestRate, period);
 
+});
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+// 내 공인 IP 주소 확인하기
+document.addEventListener("DOMContentLoaded", () => {
+  const openBtn = document.getElementById("IpCheckCard");
+  const modal = document.getElementById("IpModal");
+  const closeBtn = document.getElementById("CloseModalBtn");
+  const ipSpan = document.getElementById("ip");
+
+  openBtn.addEventListener("click", async () => {
+    modal.classList.remove("hidden");
+    ipSpan.textContent = "조회 중...";
+    const ip = await getIp();
+    ipSpan.textContent = ip || "IP를 가져올 수 없습니다.";
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
 });

@@ -181,6 +181,21 @@
                 <p class="text-gray-600">아직 콘솔만 뜸</p>
             </div>
         </div>
+        <!-- 공인 IP 확인 카드 -->
+        <div id="IpCheckCard" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer modalOpenButton">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">🌐</div>
+            <h3 class="text-lg font-semibold mb-2">내 IP 주소 확인</h3>
+            <p class="text-gray-600">클릭해서 확인</p>
+        </div>
+        <!-- 공인 IP 확인 모달 -->
+        <div id="IpModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center hidden z-50">
+            <div class="bg-white rounded-lg p-6 max-w-sm w-full shadow-lg relative">
+                <button id="CloseModalBtn" class="absolute top-2 right-2 text-gray-500 hover:text-black text-xl">&times;</button>
+                <h2 class="text-lg font-semibold mb-2">📡 현재 IP 주소</h2>
+                <p class="text-gray-800 text-center text-xl font-mono" id="ip">조회 중...</p>
+            </div>
+        </div>
+
     </div>
 
     <!-- 사례 2: 세부 도구 실행 화면 -->

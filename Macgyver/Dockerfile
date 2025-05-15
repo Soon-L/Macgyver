@@ -13,8 +13,7 @@ WORKDIR /app
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
 # JAR 파일 복사
-COPY --from=build --chown=appuser:appgroup /app/build/libs/*.jar app.jar
-
+COPY --from=build --chown=appuser:appgroup /app/build/libs/Macgyver-0.0.1-SNAPSHOT.jar app.jar
 USER appuser
 
 EXPOSE 8080

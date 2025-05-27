@@ -5,9 +5,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Table(name = "foreign") // 외제차 종류
+@Table(name = "foreign_car") // 외제차 종류
+@Getter
+@Setter
 public class ForeignCar {
 	
 	@Id

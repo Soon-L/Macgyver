@@ -9,6 +9,7 @@ import {getDistance} from './distance.js'; // 거리 계산기
 import {calculateLoanPayment} from './loan.js'; // 이자 계산기
 import {tempConversion} from './tempConversion.js'; // 온도 변환 계산기
 import { getIp } from './ipconfig.js';
+import { carpoor } from './carpoor.js'
 
 
 
@@ -349,4 +350,40 @@ document.addEventListener("DOMContentLoaded", () => {
   closeBtn.addEventListener("click", () => {
     modal.classList.add("hidden");
   });
+});
+
+
+
+
+
+
+///////////////////////////////////////////////////////////
+// 카푸어 계산기
+const CarpoorModalOpenButton = document.getElementById('CarpoorModalOpenButton'); // 거리 계산기 모달 오픈 버튼
+const CarpoorModalCloseButton = document.getElementById('CarpoorModalCloseButton'); // 거리 계산기 모달 닫기 버튼
+const CarpoorModal = document.getElementById('CarpoorModal'); // 거리 계산기 모달창
+
+
+// 모달 열기
+CarpoorModalOpenButton.addEventListener('click', () => {
+  CarpoorModal.classList.remove('hidden');
+});
+
+// 모달 닫기
+CarpoorModalCloseButton.addEventListener('click', () => {
+  CarpoorModal.classList.add('hidden');
+  return;
+});
+
+// 카푸어 계산하기
+document.getElementById('CarpoorForm').addEventListener('submit', (e) => {
+
+  let salary = Number(document.getElementById('salary').value); // 세전 연봉
+  let model =document.getElementById('car').value; // 차종
+  document.getElementById("carpoorResult").innerText = ''; // 계산하기 누를때마다 결과 리셋
+
+console.log(salary);
+console.log(model);
+
+  carpoor(salary, model);
 });

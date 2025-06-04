@@ -180,13 +180,21 @@
                 <h3 class="text-lg font-semibold mb-2"> 온도 변환 계산기</h3>
                 <p class="text-gray-600">아직 콘솔만 뜸</p>
             </div>
-			
-			<!-- 카푸어 계산기-->
-			<div id="CarpoorModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
-			    <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">🚗</div>
-			    <h3 class="text-lg font-semibold mb-2">카푸어 계산기</h3>
-			    <p class="text-gray-600">영끌하면 얼마나 걸릴까요?</p>
-			</div> 				
+
+            <!-- 카푸어 계산기-->
+            <div id="CarpoorModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">🚗</div>
+                <h3 class="text-lg font-semibold mb-2">카푸어 계산기</h3>
+                <p class="text-gray-600">영끌하면 얼마나 걸릴까요?</p>
+            </div>
+
+            <!-- 로또 번호추출 -->
+            <div id="LottoModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
+                <h3 class="text-lg font-semibold mb-2"> 로또번호 추출</h3>
+                <p class="text-gray-600">당첨 번호가 나올지도?</p>
+            </div>
+
         </div>
         <!-- 공인 IP 확인 카드 -->
         <div id="IpCheckCard" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer modalOpenButton">
@@ -194,6 +202,9 @@
             <h3 class="text-lg font-semibold mb-2">내 IP 주소 확인</h3>
             <p class="text-gray-600">클릭해서 확인</p>
         </div>
+
+
+
         <!-- 공인 IP 확인 모달 -->
         <div id="IpModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center hidden z-50">
             <div class="bg-white rounded-lg p-6 max-w-sm w-full shadow-lg relative">
@@ -501,18 +512,18 @@
             </form>
         </div>
     </div>
-	
-	<!-- 카푸어 계산기 모달창 -->
-	    <div id="CarpoorModal" class="hidden modal">
-	       <div class="modal_body">
-	           <button id="CarpoorModalCloseButton" class="button modalCloseButton">X</button>
-	           <form action="" method="get" id="CarpoorForm" onsubmit="return false;">
-	               <h2 class="text-lg font-semibold mb-2">카푸어 계산기</h2>
-	               <p>영끌하면 얼마나 걸릴까요?</p>
-	               <div>
-	                   <p>연봉(세전)</p><input type="number" id="salary" class="input">
-	                   <p>차종</p>
-	                   <select name="car" id="car">
+
+    <!-- 카푸어 계산기 모달창 -->
+    <div id="CarpoorModal" class="hidden modal">
+        <div class="modal_body">
+            <button id="CarpoorModalCloseButton" class="button modalCloseButton">X</button>
+            <form action="" method="get" id="CarpoorForm" onsubmit="return false;">
+                <h2 class="text-lg font-semibold mb-2">카푸어 계산기</h2>
+                <p>영끌하면 얼마나 걸릴까요?</p>
+                <div>
+                    <p>연봉(세전)</p><input type="number" id="salary" class="input">
+                    <p>차종</p>
+                    <select name="car" id="car">
 	                       <option value="그랜저(GN7)">그랜저(GN7)</option>
 	                       <option value="쏘렌토(MQ4)">쏘렌토(MQ4)</option>
 	                       <option value="K8">K8</option>
@@ -530,13 +541,26 @@
 	                       <option value="골프">골프</option>
 	                       <!--<option value="ES">ES</option>--> <!--sql 예약어랑 모델명이 겹쳐서 제외-->
 	                   </select>
-	               </div>
-	               <button id="CarpoorCalculateButton" class="button">계산</button>
-	           </form>
-			   <div id="carpoorResult"></div>
-			   <div id="cautionMsg>"> </div>
-	       </div>
-	   </div>
+                </div>
+                <button id="CarpoorCalculateButton" class="button">계산</button>
+            </form>
+            <div id="carpoorResult"></div>
+            <div id="cautionMsg>"> </div>
+        </div>
+    </div>
+
+    <!-- 로또번호 추출기 모달창 -->
+    <div id="LottoModal" class="hidden modal">
+        <div class="modal_body">
+            <button id="LottoModalCloseButton" class="button modalCloseButton">X</button>
+            <button id="LottoGenerateButton">로또 추첨하기</button>
+            <div id="lottoResult"></div>
+            <div>
+                <h4>추첨 결과</h4>
+                <div id="lottoHistory"></div>
+            </div>
+        </div>
+    </div>
 
 </body>
 <script type="module" th:src="@{/macgyber.js}"></script>

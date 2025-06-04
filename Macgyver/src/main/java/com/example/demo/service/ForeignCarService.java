@@ -17,15 +17,16 @@ public class ForeignCarService {
 		
 	}
 	
-    public void saveCar(String name, int price) { // 외제차 이름, 가격을 저장
+    public void saveCar(String model, int price, String photo) { // 외제차 이름, 가격을 저장
     	ForeignCar ForeignCar = new ForeignCar(); // 외제차 엔티티 호출
-    	ForeignCar.setName(name); 
+    	ForeignCar.setModel(model); 
     	ForeignCar.setPrice(price);
+    	ForeignCar.setPhoto(photo);
     	foreignCarRepository.save(ForeignCar); // → Supabase의 "korea" 테이블에 INSERT 발생
     }
 
-    public Optional<Integer> getCarPriceByName(String name) {
-        return foreignCarRepository.findByName(name).map(ForeignCar::getPrice);
+    public Optional<Integer> getCarPriceByModel(String model) {
+        return foreignCarRepository.findByModel(model).map(ForeignCar::getPrice);
     }
 
 }

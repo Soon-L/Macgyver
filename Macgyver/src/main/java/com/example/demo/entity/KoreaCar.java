@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "korea") // 국산차 종류
+@Table(name = "korea_car") // 국산차 종류
 @Getter
 @Setter
 public class KoreaCar {
@@ -19,8 +19,10 @@ public class KoreaCar {
 	
 	private Long id; // 번호
 	
-	private String name; // 차종명
+	private String model; // 차종명
 	
 	private Integer price; // 가격
+	
+	private String photo; // 사진 링크
 
 }

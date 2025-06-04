@@ -50,6 +50,13 @@
         .input {
             border: black solid 3px;
         }
+		.resultTable{display: flex; justify-content: center;}
+		.Carousel{display: flex; overflow: hidden; width: 300px;}
+		.slide{display: flex; justify-content: center; align-items: center;}
+		.hidden{display: none;}
+		.model{width: 300px;}
+		.slidesContainer{display: flex; justify-content: center; align-items: center;}
+		.slide-wrapper {width: 30rem; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: 3px;}
     </style>
 </head>
 
@@ -502,43 +509,56 @@
         </div>
     </div>
 	
-	<!-- 카푸어 계산기 모달창 -->
-	    <div id="CarpoorModal" class="hidden modal">
-	       <div class="modal_body">
-	           <button id="CarpoorModalCloseButton" class="button modalCloseButton">X</button>
-	           <form action="" method="get" id="CarpoorForm" onsubmit="return false;">
-	               <h2 class="text-lg font-semibold mb-2">카푸어 계산기</h2>
-	               <p>영끌하면 얼마나 걸릴까요?</p>
-	               <div>
-	                   <p>연봉(세전)</p><input type="number" id="salary" class="input">
-	                   <p>차종</p>
-	                   <select name="car" id="car">
-	                       <option value="그랜저(GN7)">그랜저(GN7)</option>
-	                       <option value="쏘렌토(MQ4)">쏘렌토(MQ4)</option>
-	                       <option value="K8">K8</option>
-	                       <option value="펠리세이드">펠리세이드</option>
-	                       <option value="스타리아 라운지">스타리아 라운지</option>
-	                       <option value="GV70">GV70</option>
-	                       <option value="E-클래스">E-클래스</option>
-	                       <option value="5시리즈">5시리즈</option>
-	                       <option value="C-클래스">C-클래스</option>
-	                       <option value="3시리즈">3시리즈</option>
-	                       <option value="A6">A6</option>
-	                       <option value="A4">A4</option>
-	                       <option value="마칸">마칸</option>
-	                       <option value="모델3">모델3</option>
-	                       <option value="골프">골프</option>
-	                       <!--<option value="ES">ES</option>--> <!--sql 예약어랑 모델명이 겹쳐서 제외-->
-	                   </select>
-	               </div>
-	               <button id="CarpoorCalculateButton" class="button">계산</button>
-	           </form>
-			   <div id="carpoorResult"></div>
-			   <div id="cautionMsg>"> </div>
-	       </div>
-	   </div>
+	 <!-- 카푸어 계산기 모달창 -->
+	 <div id="CarpoorModal" class="hidden modal">
+	    <div class="modal_body">
+	        <button id="CarpoorModalCloseButton" class="button modalCloseButton">X</button>
+	        <form action="" method="get" id="CarpoorForm" onsubmit="return false;">
+	            <h2 class="text-lg font-semibold mb-2">카푸어 계산기</h2>
+	            <p>영끌하면 얼마나 걸릴까요?</p>
+	            <select id="country">
+	                <option value="koreaCar">국산차</option>
+	                <option value="foreignCar">외제차</option>
+	            </select>
+	            <div class="slide-wrapper">
+	                <button class="prev btn"> ◀ </button>
+	                    <div class="slides">
+	                        <div class="koreaCar Carousel hidden">
+	                              <div class="koreaCar slidesContainer">
+	                                <div class="koreaCar model">그랜저(GN7) <img src="https://autoimg.danawa.com/photo/4188/model_360.png" alt=""></div>
+	                                <div class="koreaCar model">쏘렌토(MQ4) <img src="https://cloud.getcha.io/file/image/20240306/170969106746zq2MXJkV.png" alt=""></div>
+	                                <div class="koreaCar model">K8 <img src="https://cloud.getcha.io/file/image/20240314/1710392459nnvIhn3Es7.png" alt=""></div>
+	                                <div class="koreaCar model">펠리세이드 <img src="https://cloud.getcha.io/file/image/20241227/1735261394q6SmZFIDeV.png" alt=""></div>
+	                                <div class="koreaCar model">GV70 <img src="https://cloud.getcha.io/file/image/20240508/1715138161mNiqqvN2VL.png" alt=""></div>
+	                              </div>
+	                        </div>
+	                        <div class="foreignCar Carousel hidden">
+	                            <div class="foreignCar slidesContainer">
+	                                <div class="foreignCar model">E-클래스 <img src="https://autoimg.danawa.com/photo/3331/model_360.png" alt=""></div>
+	                                <div class="foreignCar model">5시리즈 <img src="https://dr8tj8nx72l25.cloudfront.net/new-car/series/5SERIES.png" alt=""></div>
+	                                <div class="foreignCar model">C-클래스 <img src="https://dr8tj8nx72l25.cloudfront.net/new-car/series/A-CLASS.png" alt=""></div>
+	                                <div class="foreignCar model">3시리즈 <img src="https://d2os43s8q80b97.cloudfront.net/next-s3-uploads/b7944da3-532b-4ba9-9fc7-96fe62401561/img1731985325675.png" alt=""></div>
+	                                <div class="foreignCar model">A6 <img src="https://img.getcha.io/file/image/20211118/16372120300TTuZON2fW.png" alt=""></div>
+	                                <div class="foreignCar model">A4 <img src="https://cloud.getcha.io/file/image/20240308/1709863529LDNqltulzD.png" alt=""></div>
+	                                <div class="foreignCar model">마칸 <img src="https://cloud.getcha.io/file/image/20210721/1626853324vDIs524Xmp.png" alt=""></div>
+	                                <div class="foreignCar model">모델3 <img src="https://cloud.getcha.io/file/image/20240404/171219860898Z2EB31sh.png" alt=""></div>                              
+	                            </div>
+	                        </div>
+	                    </div>
+	                <button class="next btn"> ▶ </button>
+	            </div>                     
+	            <p>연봉(세전)</p><input type="number" id="salary" class="input">
+	            <br>
+	            <button id="CarpoorCalculateButton" class="button">계산</button>
+	        </form>
+			<div id="carpoorResult"></div>
+	    </div>
+
+	</div>
 
 </body>
+<!--<script th:src="@{https://cdn.jsdelivr.net/npm/@supabase/supabase-js}"></script>
+<script th:src="@{/loadDB.js}"></script>-->
 <script type="module" th:src="@{/macgyber.js}"></script>
 <!-- 카카오톡 SDK-->
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>

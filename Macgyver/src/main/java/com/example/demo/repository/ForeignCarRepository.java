@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entity.ForeignCar;
 
 public interface ForeignCarRepository extends JpaRepository<ForeignCar, Long>{
-	Optional<ForeignCar> findByName(String Name);
+	Optional<ForeignCar> findByModel(String model);
 }

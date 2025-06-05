@@ -1,14 +1,15 @@
-import {BMI} from './BMI.js'; // BMI 계산기
-import {BMR} from './BMR.js'; // BMR 계산기
-import {calorieConsumptionMeters} from './calorieConsumptionMeters.js'; // 칼로리 계산기
-import {childbearingPeriod} from './childbearingPeriod.js'; // 가임기 계산기
-import {normalWeight} from './normalWeight.js'; // 정상체중 계산기
-import {targetHeartRate} from './targetHeartRate.js'; // 목표 심박수 계산기
-import {getAge} from './age.js'; // 나이 계산기
-import {getDistance} from './distance.js'; // 거리 계산기
-import {calculateLoanPayment} from './loan.js'; // 이자 계산기
-import {tempConversion} from './tempConversion.js'; // 온도 변환 계산기
+import { BMI } from './BMI.js'; // BMI 계산기
+import { BMR } from './BMR.js'; // BMR 계산기
+import { calorieConsumptionMeters } from './calorieConsumptionMeters.js'; // 칼로리 계산기
+import { childbearingPeriod } from './childbearingPeriod.js'; // 가임기 계산기
+import { normalWeight } from './normalWeight.js'; // 정상체중 계산기
+import { targetHeartRate } from './targetHeartRate.js'; // 목표 심박수 계산기
+import { getAge } from './age.js'; // 나이 계산기
+import { getDistance } from './distance.js'; // 거리 계산기
+import { calculateLoanPayment } from './loan.js'; // 이자 계산기
+import { tempConversion } from './tempConversion.js'; // 온도 변환 계산기
 import { getIp } from './ipconfig.js';
+import { generateLotto } from './lotto.js'; // 로또번호 추출기
 import { carpoor } from './carpoor.js'
 import {Carousel} from './Carousel.js'; 
 
@@ -336,21 +337,21 @@ document.getElementById('LoanForm').addEventListener('submit', (e) => {
 ///////////////////////////////////////////////////////////////////////////////////////
 // 내 공인 IP 주소 확인하기
 document.addEventListener("DOMContentLoaded", () => {
-  const openBtn = document.getElementById("IpCheckCard");
-  const modal = document.getElementById("IpModal");
-  const closeBtn = document.getElementById("CloseModalBtn");
-  const ipSpan = document.getElementById("ip");
+    const openBtn = document.getElementById("IpCheckCard");
+    const modal = document.getElementById("IpModal");
+    const closeBtn = document.getElementById("CloseModalBtn");
+    const ipSpan = document.getElementById("ip");
 
-  openBtn.addEventListener("click", async () => {
-    modal.classList.remove("hidden");
-    ipSpan.textContent = "조회 중...";
-    const ip = await getIp();
-    ipSpan.textContent = ip || "IP를 가져올 수 없습니다.";
-  });
+    openBtn.addEventListener("click", async() => {
+        modal.classList.remove("hidden");
+        ipSpan.textContent = "조회 중...";
+        const ip = await getIp();
+        ipSpan.textContent = ip || "IP를 가져올 수 없습니다.";
+    });
 
-  closeBtn.addEventListener("click", () => {
-    modal.classList.add("hidden");
-  });
+    closeBtn.addEventListener("click", () => {
+        modal.classList.add("hidden");
+    });
 });
 
 // 캐러셀 함수
@@ -370,18 +371,36 @@ const CarpoorModal = document.getElementById('CarpoorModal'); // 거리 계산�
 
 // 모달 열기
 CarpoorModalOpenButton.addEventListener('click', () => {
-  CarpoorModal.classList.remove('hidden');
+    CarpoorModal.classList.remove('hidden');
 });
 
 // 모달 닫기
 CarpoorModalCloseButton.addEventListener('click', () => {
-  CarpoorModal.classList.add('hidden');
-  return;
+    CarpoorModal.classList.add('hidden');
+    return;
 });
 
 // 카푸어 계산하기
 document.getElementById('CarpoorForm').addEventListener('submit', (e) => {
 	e.preventDefault(); // 페이지 새로고침 방지
+
+///////////////////////////////////////////////////////////
+// 로또번호 추출기
+const LottoModalOpenButton = document.getElementById("LottoModalOpenButton"); // 로또번호 모달 오픈 버튼
+const LottoModalCloseButton = document.getElementById("LottoModalCloseButton"); // 로또번호 모달 닫기 버튼
+const LottoModal = document.getElementById("LottoModal"); // 로또번호 추출기 모달창
+
+LottoModalOpenButton.addEventListener("click", function() {
+    LottoModal.classList.remove('hidden');
+})
+
+LottoModalCloseButton.addEventListener("click", function() {
+    LottoModal.classList.add('hidden');
+})
+
+document.getElementById('LottoGenerateButton').addEventListener('click', () => {
+    generateLotto();
+});
 
   let salary = Number(document.getElementById('salary').value); // 세전 연봉
   let selectedModelEl =document.querySelector('.model.active'); // 선택한 차종
@@ -400,8 +419,3 @@ document.getElementById('CarpoorForm').addEventListener('submit', (e) => {
 
   carpoor(salary, model, type);
 });
-
-
-
-
-

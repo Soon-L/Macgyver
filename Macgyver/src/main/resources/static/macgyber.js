@@ -384,24 +384,6 @@ CarpoorModalCloseButton.addEventListener('click', () => {
 document.getElementById('CarpoorForm').addEventListener('submit', (e) => {
 	e.preventDefault(); // 페이지 새로고침 방지
 
-///////////////////////////////////////////////////////////
-// 로또번호 추출기
-const LottoModalOpenButton = document.getElementById("LottoModalOpenButton"); // 로또번호 모달 오픈 버튼
-const LottoModalCloseButton = document.getElementById("LottoModalCloseButton"); // 로또번호 모달 닫기 버튼
-const LottoModal = document.getElementById("LottoModal"); // 로또번호 추출기 모달창
-
-LottoModalOpenButton.addEventListener("click", function() {
-    LottoModal.classList.remove('hidden');
-})
-
-LottoModalCloseButton.addEventListener("click", function() {
-    LottoModal.classList.add('hidden');
-})
-
-document.getElementById('LottoGenerateButton').addEventListener('click', () => {
-    generateLotto();
-});
-
   let salary = Number(document.getElementById('salary').value); // 세전 연봉
   let selectedModelEl =document.querySelector('.model.active'); // 선택한 차종
   let type = document.getElementById('country').value;
@@ -418,4 +400,25 @@ document.getElementById('LottoGenerateButton').addEventListener('click', () => {
 
 
   carpoor(salary, model, type);
+});
+
+
+
+
+///////////////////////////////////////////////////////////
+// 로또번호 추출기
+const LottoModalOpenButton = document.getElementById("LottoModalOpenButton"); // 로또번호 모달 오픈 버튼
+const LottoModalCloseButton = document.getElementById("LottoModalCloseButton"); // 로또번호 모달 닫기 버튼
+const LottoModal = document.getElementById("LottoModal"); // 로또번호 추출기 모달창
+
+LottoModalOpenButton.addEventListener("click", function() {
+    LottoModal.classList.remove('hidden');
+})
+
+LottoModalCloseButton.addEventListener("click", function() {
+    LottoModal.classList.add('hidden');
+})
+
+document.getElementById('LottoGenerateButton').addEventListener('click', () => {
+    generateLotto();
 });

@@ -20,7 +20,7 @@ public class KoreaCarService {
         KRcar.setModel(model);
         KRcar.setPrice(price);
         KRcar.setPhoto(photo);
-        KRcarRepository.save(KRcar); // → Supabase의 "korea" 테이블에 INSERT 발생
+        KRcarRepository.save(KRcar);
     }
     
     public Optional<Integer> getCarPriceByModel(String model) {

@@ -386,11 +386,17 @@ document.getElementById('CarpoorForm').addEventListener('submit', (e) => {
   let salary = Number(document.getElementById('salary').value); // 세전 연봉
   let selectedModelEl =document.querySelector('.model.active'); // 선택한 차종
   let type = document.getElementById('country').value;
+  
+  // 예외처리
+  if(!selectedModelEl || !type){
+  alert('차종을 선택하세요.');
+  return;
+  }
+  
   const model = selectedModelEl.textContent.trim(); // 차종명 텍스트 추출
   document.getElementById("carpoorResult").innerText = ''; // 계산하기 누를때마다 결과 리셋
+  
 
-// console.log(salary);
-// console.log(model);
 
   carpoor(salary, model, type);
 });

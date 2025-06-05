@@ -1,9 +1,9 @@
 export async function carpoor(salary, model, type){
 
-		// 차량 선택 확인
-		if (!model) {
-		  alert("차종을 선택하세요.");
-		  return;
+		// 연봉 입력 확인
+		if(!salary){
+			alert("연봉을 입력하세요.");
+			return;
 		}
 		
 		

@@ -12,6 +12,7 @@ country.addEventListener('change', () => {
   
   if (selectedCountry === 'koreaCar') {
     KRLoadDB(selectedCountry);
+	
   } else if (selectedCountry === 'foreignCar') {
     foreignLoadDB(selectedCountry);
   }

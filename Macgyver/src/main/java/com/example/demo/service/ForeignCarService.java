@@ -22,7 +22,7 @@ public class ForeignCarService {
     	ForeignCar.setModel(model); 
     	ForeignCar.setPrice(price);
     	ForeignCar.setPhoto(photo);
-    	foreignCarRepository.save(ForeignCar); // → Supabase의 "korea" 테이블에 INSERT 발생
+    	foreignCarRepository.save(ForeignCar); 
     }
 
     public Optional<Integer> getCarPriceByModel(String model) {

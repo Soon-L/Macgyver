@@ -15,15 +15,16 @@ public class KoreaCarService {
         this.KRcarRepository = KRcarRepository;
     }
     
-    public void saveCar(String name, int price) {
+    public void saveCar(String model, int price, String photo) {
         KoreaCar KRcar = new KoreaCar();
-        KRcar.setName(name);
+        KRcar.setModel(model);
         KRcar.setPrice(price);
-        KRcarRepository.save(KRcar); // → Supabase의 "korea" 테이블에 INSERT 발생
+        KRcar.setPhoto(photo);
+        KRcarRepository.save(KRcar);
     }
     
-    public Optional<Integer> getCarPriceByName(String name) {
-        return KRcarRepository.findByName(name).map(KoreaCar::getPrice);
+    public Optional<Integer> getCarPriceByModel(String model) {
+        return KRcarRepository.findByModel(model).map(KoreaCar::getPrice);
     }
 
 }

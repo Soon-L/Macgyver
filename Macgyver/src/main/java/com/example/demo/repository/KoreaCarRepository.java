@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entity.KoreaCar;
 
 public interface KoreaCarRepository extends JpaRepository<KoreaCar, Long>{
-	Optional<KoreaCar> findByName(String name);
+	Optional<KoreaCar> findByModel(String model);
 }

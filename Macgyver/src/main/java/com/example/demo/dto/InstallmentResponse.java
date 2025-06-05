@@ -2,22 +2,22 @@ package com.example.demo.dto;
 
 // 계산 결과를 spring -> js로 넘겨주는 파일
 public class InstallmentResponse {
-	private int months;
-	private String message;
+	private String result; // 카푸어 등급
+	private String message; // 에러 메세지
 	
 	
-	public InstallmentResponse(int months, String message) {
-		this.months = months;
+	public InstallmentResponse(String message, String result) {
+		this.result = result;
 		this.message = message;
 	}
 	
-	public int getMonths() {return months;} // 차종명 return
+	public String getResult() {return result;} // 계산한 카푸어 등급 java에서 가져옴
 	
-	public void setMonths(int months) {this.months = months;} // 입력한 차종명 넘기기
+	public void setResult(String result) {this.result = result;} // 카푸어 등급 js로 넘기기
 	
 	
-	public String getMessage() {return message;}
+	public String getMessage() {return message;} // 에러 메세지 java에서 가져옴
 	
-	public void setMessage(String message) {this.message = message;}
+	public void setMessage(String message) {this.message = message;} // 에러 메세지 js로 넘기기
 
 }

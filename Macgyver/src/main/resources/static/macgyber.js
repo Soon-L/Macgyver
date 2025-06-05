@@ -10,6 +10,7 @@ import {calculateLoanPayment} from './loan.js'; // 이자 계산기
 import {tempConversion} from './tempConversion.js'; // 온도 변환 계산기
 import { getIp } from './ipconfig.js';
 import { carpoor } from './carpoor.js'
+import {Carousel} from './Carousel.js'; 
 
 
 
@@ -352,6 +353,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// 캐러셀 함수
+////////////////////////////////////////////////////////////////////////////
+Carousel();
 
 
 
@@ -377,13 +381,27 @@ CarpoorModalCloseButton.addEventListener('click', () => {
 
 // 카푸어 계산하기
 document.getElementById('CarpoorForm').addEventListener('submit', (e) => {
+	e.preventDefault(); // 페이지 새로고침 방지
 
   let salary = Number(document.getElementById('salary').value); // 세전 연봉
-  let model =document.getElementById('car').value; // 차종
+  let selectedModelEl =document.querySelector('.model.active'); // 선택한 차종
+  let type = document.getElementById('country').value;
+  
+  // 예외처리
+  if(!selectedModelEl || !type){
+  alert('차종을 선택하세요.');
+  return;
+  }
+  
+  const model = selectedModelEl.textContent.trim(); // 차종명 텍스트 추출
   document.getElementById("carpoorResult").innerText = ''; // 계산하기 누를때마다 결과 리셋
+  
 
-console.log(salary);
-console.log(model);
 
-  carpoor(salary, model);
+  carpoor(salary, model, type);
 });
+
+
+
+
+

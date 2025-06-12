@@ -15,8 +15,11 @@ export function Carousel() {
   country.addEventListener("click", function () {
     countryValue = this.value; // 선텍한 국가
     currentSlide = 0; // 첫 페이지로 세팅
+	
     showCarousel(countryValue); // 캐러셀 화면전환 
     goToSlide(currentSlide, countryValue); // 캐러셀 좌우 버튼 이벤트
+	
+
   });
   
   
@@ -33,6 +36,7 @@ export function Carousel() {
     goToSlide(index, countryValue);
   });
 
+  // 다음 버튼 클릭 이벤트
   nextBtn.addEventListener('click', (event) => {
     event.preventDefault();
     const modelsCnt = (document.querySelectorAll(`.${countryValue} .model`).length)-1;
@@ -99,6 +103,10 @@ function showCarousel(countryValue) {
   
   const selected = document.querySelector(`.${countryValue}`); // 사용자가 국산/외제 선택하면
   if (selected) selected.classList.remove('hidden'); // 선택한 나라만 보이기
+  
+  
+
+
   
 
   

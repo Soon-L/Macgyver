@@ -1,4 +1,6 @@
 export function generateLotto() {
+	
+
     let ball = [];
 
     // 1~45 채우기

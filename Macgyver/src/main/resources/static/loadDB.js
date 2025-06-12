@@ -40,11 +40,11 @@ async function KRLoadDB(selectedCountry) {
   container.innerHTML = ''; // 기존 내용 초기화
 
   // HTML에 추가
-  data.forEach(koreaCar => {
+  data.forEach((koreaCar, i) => {
     const models = document.createElement('div');
 	const modelimg = document.createElement('img');
 	
-	models.className = `${selectedCountry} model` // class명 추가
+	models.className = `${selectedCountry} model KR` + i // class명 추가
     models.innerText = koreaCar.model || '[꽝]';
 	modelimg.src = koreaCar.photo || '사진안뜸';
 	models.style.width = '300px';
@@ -56,6 +56,11 @@ async function KRLoadDB(selectedCountry) {
 	
 	country === ''; // 리셋
   });
+  
+  
+  // 첫 모델에 자동 active 추가
+  const KRFirstModel = document.querySelector('.KR0');
+  KRFirstModel.classList.add('active');
 }
 
 
@@ -79,10 +84,10 @@ async function foreignLoadDB(selectedCountry) {
   container.innerHTML = ''; // 기존 내용 초기화
 
   // HTML에 추가
-  data.forEach(foreignCar => {
+  data.forEach((foreignCar, i) => {
     const models = document.createElement('div');
 	const modelimg = document.createElement('img');
-	models.className = `${selectedCountry} model` // class명 추가
+	models.className = `${selectedCountry} model foreign` + i // class명 추가
 	
     models.innerText = foreignCar.model || '[꽝]';
 	modelimg.src = foreignCar.photo || '사진안뜸';
@@ -95,5 +100,9 @@ async function foreignLoadDB(selectedCountry) {
 	
 	country === ''; // 리셋
   });
+  
+  // 첫 모델에 자동 active 추가
+  const foreignFirstModel = document.querySelector('.foreign0');
+  foreignFirstModel.classList.add('active');
 }
 

@@ -86,7 +86,7 @@ public class CarPoorController {
         
         // 카푸어 등급들
         if(salaryPercent>=90) {
-        	result = "로또 번호 추출하러 가기";
+        	result = "아래를 확인하세요🔽";         
         }
         else if(salaryPercent<90 && salaryPercent>=80) {
         	result = "차에서 살아라";

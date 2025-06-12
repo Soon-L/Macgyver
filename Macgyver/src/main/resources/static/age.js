@@ -3,8 +3,10 @@ export function getAge(birth){
     let today = new Date();
     let year = today.getFullYear();
     let yourAge = year - birth;  
+	
      
     return yourAge;
+	
 
     
 }

@@ -70,14 +70,14 @@
                 SmartTools Pro
             </h1>
             <div class="flex items-center space-x-4">
+				<!-- 히스토리 영역 -->
 				<div class="relative group">
 				    <button class="p-2 hover:bg-gray-100 rounded-full">
 				       🕖︎<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
 				    </button>
 				       <div class="hidden group-hover:block absolute right-0 w-72 bg-white shadow-xl p-4 rounded-lg">
 				           <h3 class="font-semibold mb-2">히스토리</h3>
-				                <div class="history text-sm space-y-2">
-				                     <div class="p-2 hover:bg-gray-50 rounded"></div>
+				                <div class="text-sm space-y-2" id="historyContainer">
 				                 </div>
 				        </div>
 				</div>
@@ -117,51 +117,51 @@
             </div>
 
             <!-- BMI 계산기 -->
-            <div id="BMIModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
+            <div on:click="{history(event)}" id="BMIModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
                 <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
-                <h3 class="text-lg font-semibold mb-2">BMI 계산기</h3>
+                <h3 class="text-lg font-semibold mb-2" id="BMI">BMI 계산기</h3>
                 <p class="text-gray-600">키(cm), 몸무게(kg) 입력</p>
             </div>
 
             <!-- BMR 계산기-->
             <div id="BMRModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
                 <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
-                <h3 class="text-lg font-semibold mb-2">BMR 계산기</h3>
+                <h3 class="text-lg font-semibold mb-2" id="BMR">BMR 계산기</h3>
                 <p class="text-gray-600">키(cm), 몸무게(kg), 성별, 나이(만) 입력</p>
             </div>
 
             <!-- 칼로리 계산기 -->
             <div id="CalorieModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
                 <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
-                <h3 class="text-lg font-semibold mb-2">칼로리 계산기</h3>
+                <h3 class="text-lg font-semibold mb-2" id="Calorie">칼로리 계산기</h3>
                 <p class="text-gray-600">체중(kg), 시간(분) 입력</p>
             </div>
 
             <!-- 가임기 계산기 -->
             <div id="ChildbearingPeriodModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
                 <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
-                <h3 class="text-lg font-semibold mb-2">가임기 계산기</h3>
+                <h3 class="text-lg font-semibold mb-2" id="ChildbearingPeriod">가임기 계산기</h3>
                 <p class="text-gray-600">마지막 생리, 생리주기</p>
             </div>
 
             <!-- 정상체중 계산기 -->
             <div id="NormalWeightModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
                 <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
-                <h3 class="text-lg font-semibold mb-2">정상체중 계산기</h3>
+                <h3 class="text-lg font-semibold mb-2" id="NormalWeight">정상체중 계산기</h3>
                 <p class="text-gray-600">키만 입력</p>
             </div>
 
             <!-- 목표 심박수 계산기-->
             <div id="TargetHeartRateModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
                 <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
-                <h3 class="text-lg font-semibold mb-2"> 목표 심박수 계산기</h3>
+                <h3 class="text-lg font-semibold mb-2" id="TargetHeartRate"> 목표 심박수 계산기</h3>
                 <p class="text-gray-600">나이만 입력</p>
             </div>
 
             <!-- 나이 계산기-->
             <div id="AgeModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
                 <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
-                <h3 class="text-lg font-semibold mb-2"> 나이 계산기</h3>
+                <h3 class="text-lg font-semibold mb-2" id="Age"> 나이 계산기</h3>
                 <p class="text-gray-600">나이만 입력</p>
             </div>
 
@@ -182,35 +182,35 @@
             <!-- 거리 계산기-->
             <div id="DistanceModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
                 <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
-                <h3 class="text-lg font-semibold mb-2"> 거리 계산기</h3>
+                <h3 class="text-lg font-semibold mb-2" id="Distance"> 거리 계산기</h3>
                 <p class="text-gray-600">대신 계산해드려요</p>
             </div>
 
             <!-- 이자 계산기-->
             <div id="LoanModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
                 <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
-                <h3 class="text-lg font-semibold mb-2"> 이자 계산기</h3>
+                <h3 class="text-lg font-semibold mb-2" id="Loan"> 이자 계산기</h3>
                 <p class="text-gray-600">돈내놔</p>
             </div>
 
             <!-- 온도 변환 계산기-->
             <div id="TempConversionModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
                 <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
-                <h3 class="text-lg font-semibold mb-2"> 온도 변환 계산기</h3>
+                <h3 class="text-lg font-semibold mb-2" id="TempConversion"> 온도 변환 계산기</h3>
                 <p class="text-gray-600">아직 콘솔만 뜸</p>
             </div>
 
             <!-- 카푸어 계산기-->
             <div id="CarpoorModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
                 <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">🚗</div>
-                <h3 class="text-lg font-semibold mb-2">카푸어 계산기</h3>
+                <h3 class="text-lg font-semibold mb-2" id="Carpoor">카푸어 계산기</h3>
                 <p class="text-gray-600">영끌하면 얼마나 걸릴까요?</p>
             </div>
 
             <!-- 로또 번호추출 -->
             <div id="LottoModalOpenButton" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow modalOpenButton">
                 <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">💰</div>
-                <h3 class="text-lg font-semibold mb-2"> 로또번호 추출</h3>
+                <h3 class="text-lg font-semibold mb-2" id="Lotto"> 로또번호 추출</h3>
                 <p class="text-gray-600">당첨 번호가 나올지도?</p>
             </div>
 
@@ -218,7 +218,7 @@
         <!-- 공인 IP 확인 카드 -->
         <div id="IpCheckCard" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer modalOpenButton">
             <div class="w-12 h-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">🌐</div>
-            <h3 class="text-lg font-semibold mb-2">내 IP 주소 확인</h3>
+            <h3 class="text-lg font-semibold mb-2" id="Ip">내 IP 주소 확인</h3>
             <p class="text-gray-600">클릭해서 확인</p>
         </div>
 
@@ -443,7 +443,7 @@
         <div class="modal_body">
             <button id="AgeModalCloseButton" class="button modalCloseButton">X</button>
             <form action="" method="get" id="AgeForm" onsubmit="return false;">
-                <h2 class="text-lg font-semibold mb-2">나이 계산기</h2>
+                <h2 class="text-lg font-semibold mb-2" id="ageTitle">나이 계산기</h2>
                 <div>
                     <p>태어난 년도</p><input type="number" id="birth" class="input" placeholder="예시 : 2000">
                 </div>
@@ -547,7 +547,7 @@
 
 	 <!-- 카푸어 계산기 모달창 -->
 	 <div id="CarpoorModal" class="hidden modal">
-	    <div class="modal_body">
+	    <div class="modal_body" id="CarpoorModal">
 	        <button id="CarpoorModalCloseButton" class="button modalCloseButton">X</button>
 	        <form action="" method="get" id="CarpoorForm" onsubmit="return false;">
 	            <h2 class="text-lg font-semibold mb-2">카푸어 계산기</h2>
@@ -597,6 +597,8 @@
 <script th:src="@{https://cdn.jsdelivr.net/npm/@supabase/supabase-js}"></script>
 <script th:src="@{/loadDB.js}"></script>
 <script type="module" th:src="@{/macgyber.js}"></script>
+
+
 <!-- 카카오톡 SDK-->
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="module" th:src="@{/kakaotalkSharingApi.js}"></script>

@@ -11,7 +11,10 @@ import { tempConversion } from './tempConversion.js'; // 온도 변환 계산기
 import { getIp } from './ipconfig.js';
 import { generateLotto } from './lotto.js'; // 로또번호 추출기
 import { carpoor } from './carpoor.js'
-import {Carousel} from './Carousel.js'; 
+import { Carousel } from './Carousel.js';
+import { history } from './history.js';
+
+
 
 
 
@@ -22,15 +25,42 @@ const BMIModalOpenButton = document.getElementById('BMIModalOpenButton');
 const BMIModalCloseButton = document.getElementById('BMIModalCloseButton');
 const BMIModal = document.getElementById('BMIModal');
 
-// 열기
+
+
+
+
+
+// 모달 열기
 BMIModalOpenButton.addEventListener('click', () => {
     BMIModal.classList.remove('hidden');
+	
+	history(event);
+
+	document.querySelector('.historyModalOpenButton').addEventListener('click', () => {
+		history(event);
+	})
+
+
 });
 
-// 닫기
+	
+
+				
+
+
+
+
+
+
+
+
+
+// 모달 닫기
 BMIModalCloseButton.addEventListener('click', () => {
     BMIModal.classList.add('hidden');
 });
+
+
 
 
 // BMI 계산 버튼 이벤트
@@ -55,16 +85,35 @@ const BMRModalOpenButton = document.getElementById('BMRModalOpenButton');
 const BMRModalCloseButton = document.getElementById('BMRModalCloseButton');
 const BMRModal = document.getElementById('BMRModal');
 
+
+
+
 // 열기
 BMRModalOpenButton.addEventListener('click', () => {
     BMRModal.classList.remove('hidden');
+	
+	history(event);
+
+			document.querySelector('.historyModalOpenButton').addEventListener('click', () => {
+				history(event);
+			})
+	
+
 });
+	
+	
+
+
+
 
 // 닫기
 BMRModalCloseButton.addEventListener('click', () => {
     BMRModal.classList.add('hidden');
 });
 
+
+
+// BMR 계산하기
 document.getElementById('BMRForm').addEventListener('submit', () => {
     const gender = document.querySelector('input[type=radio][name="gender"]:checked').value; // 성별
     const height = parseFloat(document.getElementById('BMRHeight').value); // 키
@@ -85,10 +134,24 @@ const CalorieModalOpenButton = document.getElementById('CalorieModalOpenButton')
 const CalorieModalCloseButton = document.getElementById('CalorieModalCloseButton');
 const CalorieModal = document.getElementById('CalorieModal');
 
+
+
 // 열기
 CalorieModalOpenButton.addEventListener('click', () => {
     CalorieModal.classList.remove('hidden');
+	history(event);
+	
+	
+	document.querySelector('.historyModalOpenButton').addEventListener('click', () => {
+		history(event);
+	})
 });
+
+
+
+
+
+
 
 // 닫기
 CalorieModalCloseButton.addEventListener('click', () => {
@@ -113,10 +176,24 @@ const ChildbearingPeriodModalOpenButton = document.getElementById('ChildbearingP
 const ChildbearingPeriodModalCloseButton = document.getElementById('ChildbearingPeriodModalCloseButton');
 const ChildbearingPeriodModal = document.getElementById('ChildbearingPeriodModal');
 
+
+
+
 // 열기
 ChildbearingPeriodModalOpenButton.addEventListener('click', () => {
     ChildbearingPeriodModal.classList.remove('hidden');
+	history(event);
+	
+	
+	document.querySelector('.historyModalOpenButton').addEventListener('click', () => {
+		history(event);
+	})
+	
+
 });
+
+
+
 
 // 닫기
 ChildbearingPeriodModalCloseButton.addEventListener('click', () => {
@@ -142,10 +219,22 @@ const NormalWeightModalOpenButton = document.getElementById('NormalWeightModalOp
 const NormalWeightModalCloseButton = document.getElementById('NormalWeightModalCloseButton');
 const NormalWeightModal = document.getElementById('NormalWeightModal');
 
+
+
+
 // 열기
 NormalWeightModalOpenButton.addEventListener('click', () => {
     NormalWeightModal.classList.remove('hidden');
+	history(event);
+	
+	document.querySelector('.historyModalOpenButton').addEventListener('click', () => {
+		history(event);
+	})
 });
+
+
+
+
 
 // 닫기
 NormalWeightModalCloseButton.addEventListener('click', () => {
@@ -170,10 +259,25 @@ const TargetHeartRateModalOpenButton = document.getElementById('TargetHeartRateM
 const TargetHeartRateModalCloseButton = document.getElementById('TargetHeartRateModalCloseButton');
 const TargetHeartRateModal = document.getElementById('TargetHeartRateModal');
 
+
+
+
 // 열기
 TargetHeartRateModalOpenButton.addEventListener('click', () => {
     TargetHeartRateModal.classList.remove('hidden');
+	history(event);
+	
+	
+	document.querySelector('.historyModalOpenButton').addEventListener('click', () => {
+		history(event);
+	})
+	
+	
+	
 });
+
+
+
 
 // 닫기
 TargetHeartRateModalCloseButton.addEventListener('click', () => {
@@ -196,21 +300,45 @@ const AgeModalCloseButton = document.getElementById('AgeModalCloseButton');
 const AgeModal = document.getElementById('AgeModal');
 
 
+
+
+
 // 모달 열기
 AgeModalOpenButton.addEventListener('click', () => {
     AgeModal.classList.remove('hidden');
+	history(event);
+	
+	
+	document.querySelector('.historyModalOpenButton').addEventListener('click', () => {
+		history(event);
+	})
+
+
+	
+	
+	
+
 });
+
+
 
 // 모달 닫기
 AgeModalCloseButton.addEventListener('click', () => {
     AgeModal.classList.add('hidden');
 });
 
+
+
+
 // 나이 계산하기
 document.getElementById('AgeForm').addEventListener('submit', (e) => {
     const birth = parseInt(document.getElementById('birth').value);
     const Age = getAge(birth);
 
+	if(!birth){
+		alert('출생년도를 입력하세요.');
+		return;
+	}
     alert("당신의 나이는 만 " + Age + "세 입니다.")
 });
 
@@ -249,10 +377,20 @@ const TempConversionModalCloseButton = document.getElementById('TempConversionMo
 const TempConversionModal = document.getElementById('TempConversionModal');
 
 
+
+
+
 // 모달 열기
 TempConversionModalOpenButton.addEventListener('click', () => {
     TempConversionModal.classList.remove('hidden');
+	history(event);
+	
+	document.querySelector('.historyModalOpenButton').addEventListener('click', () => {
+		history(event);
+	})
 });
+
+
 
 // 모달 닫기
 TempConversionModalCloseButton.addEventListener('click', () => {
@@ -277,10 +415,21 @@ const DistanceModalCloseButton = document.getElementById('DistanceModalCloseButt
 const DistanceModal = document.getElementById('DistanceModal'); // 거리 계산기 모달창
 
 
+
+
+
 // 모달 열기
 DistanceModalOpenButton.addEventListener('click', () => {
     DistanceModal.classList.remove('hidden');
+	history(event);
+	
+	document.querySelector('.historyModalOpenButton').addEventListener('click', () => {
+		history(event);
+	})
 });
+
+
+
 
 // 모달 닫기
 DistanceModalCloseButton.addEventListener('click', () => {
@@ -309,10 +458,22 @@ const LoanModalCloseButton = document.getElementById('LoanModalCloseButton'); //
 const LoanModal = document.getElementById('LoanModal'); // 거리 계산기 모달창
 
 
+
+
+
 // 모달 열기
 LoanModalOpenButton.addEventListener('click', () => {
     LoanModal.classList.remove('hidden');
+	history(event);
+	
+	
+	document.querySelector('.historyModalOpenButton').addEventListener('click', () => {
+		history(event);
+	})
 });
+
+
+
 
 // 모달 닫기
 LoanModalCloseButton.addEventListener('click', () => {
@@ -344,14 +505,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     openBtn.addEventListener("click", async() => {
         modal.classList.remove("hidden");
+		
+		history(event);
+		
+		document.querySelector('.historyModalOpenButton').addEventListener('click', () => {
+			history(event);
+		})
+		
         ipSpan.textContent = "조회 중...";
         const ip = await getIp();
         ipSpan.textContent = ip || "IP를 가져올 수 없습니다.";
-    });
+		
+		
+		})
+	
+	
+	
 
     closeBtn.addEventListener("click", () => {
         modal.classList.add("hidden");
     });
+
 });
 
 // 캐러셀 함수
@@ -364,15 +538,25 @@ Carousel();
 
 ///////////////////////////////////////////////////////////
 // 카푸어 계산기
-const CarpoorModalOpenButton = document.getElementById('CarpoorModalOpenButton'); // 거리 계산기 모달 오픈 버튼
-const CarpoorModalCloseButton = document.getElementById('CarpoorModalCloseButton'); // 거리 계산기 모달 닫기 버튼
-const CarpoorModal = document.getElementById('CarpoorModal'); // 거리 계산기 모달창
+const CarpoorModalOpenButton = document.getElementById('CarpoorModalOpenButton'); // 카푸어 계산기 모달 오픈 버튼
+const CarpoorModalCloseButton = document.getElementById('CarpoorModalCloseButton'); // 카푸어 계산기 모달 닫기 버튼
+const CarpoorModal = document.getElementById('CarpoorModal'); // 카푸어 계산기 모달창
+
+
 
 
 // 모달 열기
 CarpoorModalOpenButton.addEventListener('click', () => {
     CarpoorModal.classList.remove('hidden');
+	history(event);
+	
+	
+	document.querySelector('.historyModalOpenButton').addEventListener('click', () => {
+		history(event);
+	})
 });
+
+
 
 // 모달 닫기
 CarpoorModalCloseButton.addEventListener('click', () => {
@@ -399,7 +583,8 @@ document.getElementById('CarpoorForm').addEventListener('submit', (e) => {
   
 
 
-  carpoor(salary, model, type);
+  carpoor(salary, model, type, history);
+
 });
 
 
@@ -411,9 +596,23 @@ const LottoModalOpenButton = document.getElementById("LottoModalOpenButton"); //
 const LottoModalCloseButton = document.getElementById("LottoModalCloseButton"); // 로또번호 모달 닫기 버튼
 const LottoModal = document.getElementById("LottoModal"); // 로또번호 추출기 모달창
 
+
+
 LottoModalOpenButton.addEventListener("click", function() {
     LottoModal.classList.remove('hidden');
-})
+	history(event);
+	
+	document.querySelector('.historyModalOpenButton').addEventListener('click', () => {
+		history(event);
+	})
+	
+
+});
+
+
+
+
+
 
 LottoModalCloseButton.addEventListener("click", function() {
     LottoModal.classList.add('hidden');
@@ -422,3 +621,5 @@ LottoModalCloseButton.addEventListener("click", function() {
 document.getElementById('LottoGenerateButton').addEventListener('click', () => {
     generateLotto();
 });
+
+

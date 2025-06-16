@@ -1,8 +1,11 @@
 package com.example.demo;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +30,7 @@ public class CarPoorController {
 
     }
 
+    @CrossOrigin(origins = "*") // CORS 허용 (개발용)
     @PostMapping("/calculate") // 반드시 carpoor.js 의 fetch 경로랑 통일
     public ResponseEntity<InstallmentResponse> calculate(@RequestBody CarPriceRequest req) { // js에서 받은 연봉, 차종 정보 spring으로 넘기는 dto 클래스
         Optional<Integer> KRCarPrice = KRCarService.getCarPriceByModel(req.getModel()); // 국산 차종과 일치하는 컬럼 찾기
@@ -115,5 +119,19 @@ public class CarPoorController {
 
         return ResponseEntity.ok(new InstallmentResponse(null, result)); // 계산 결과 dto 파일로 넘김
     }
+    
+    
+    @CrossOrigin(origins = "*") // CORS 허용 (개발용)
+    @GetMapping("/models")
+    public List<String> getAllCarModels() {
+        List<String> koreaModels = KRCarService.getAllModels(); // 서비스에 메서드 추가
+        List<String> foreignModels = foreignCarService.getAllModels(); // 서비스에 메서드 추가
+        koreaModels.addAll(foreignModels);
+        return koreaModels;
 }
+
+}
+
+
+
 

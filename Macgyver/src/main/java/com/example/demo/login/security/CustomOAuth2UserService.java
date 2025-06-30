@@ -30,7 +30,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         OAuth2User oAuth2User = super.loadUser(oAuth2UserRequest);
         String registrationId = oAuth2UserRequest.getClientRegistration().getRegistrationId();
         OAuth2UserInfo oAuth2UserInfo = OAuth2UserInfoFactory.getOAuth2UserInfo(registrationId, oAuth2User.getAttributes());
-
+        
         String uniqueIdentifier = registrationId + "_" + oAuth2UserInfo.getId();
 
         User user = userRepository.findByUniqueIdentifier(uniqueIdentifier)
@@ -46,13 +46,14 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     }
 
     private User createUser(OAuth2UserInfo oAuth2UserInfo, String registrationId, String uniqueIdentifier) {
+    	
         User user = User.builder()
                 .provider(AuthProvider.valueOf(registrationId.toUpperCase()))
                 .providerId(oAuth2UserInfo.getId())
                 .uniqueIdentifier(uniqueIdentifier)
                 .name(oAuth2UserInfo.getName())
                 .imageUrl(oAuth2UserInfo.getImageUrl())
-                .email(oAuth2UserInfo.getImageUrl())
+                .email(oAuth2UserInfo.getEmail())
                 .build();
 
         return userRepository.save(user);

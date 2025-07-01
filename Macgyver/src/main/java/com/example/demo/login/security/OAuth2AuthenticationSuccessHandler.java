@@ -9,6 +9,7 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
 import org.springframework.stereotype.Component;
 
 import com.example.demo.login.common.util.CookieUtils;
+import com.example.demo.login.security.JwtTokenProvider.TokenInfo;
 import com.example.demo.user.config.AppProperties;
 
 import jakarta.servlet.ServletException;
@@ -25,15 +26,12 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        String targetUrl = determineTargetUrl(request, response, authentication);
+        UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+        TokenInfo tokenInfo = tokenProvider.generateAccessToken(userPrincipal);
 
-        if (response.isCommitted()) {
-            logger.debug("Response has already been committed. Unable to redirect to " + targetUrl);
-            return;
-        }
+        String targetUrl = "http://localhost:5173/oauth?token=" + tokenInfo.token();
 
         clearAuthenticationAttributes(request, response);
-        tokenProvider.createAndSetTokens(authentication, response);
         getRedirectStrategy().sendRedirect(request, response, targetUrl);
     }
 

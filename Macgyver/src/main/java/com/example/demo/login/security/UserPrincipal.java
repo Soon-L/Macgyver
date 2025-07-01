@@ -15,22 +15,26 @@ import com.example.demo.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
+@Setter
+@Getter
 public class UserPrincipal implements OAuth2User, UserDetails {
-    @Getter
+    
     private final Long id;
     private final String email;
     private final String name;
     private final String password;
     private final Collection<? extends GrantedAuthority> authorities;
-    @Setter
+    private String imageUrl;
+    
     private Map<String, Object> attributes;
 
-    public UserPrincipal(Long id, String email,String name, String password, Collection<? extends GrantedAuthority> authorities) {
+    public UserPrincipal(Long id, String email,String name, String password, String imageUrl, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.email = email;
 		this.name = name;
         this.password = password;
         this.authorities = authorities;
+        this.imageUrl = imageUrl;
     }
 
     public static UserPrincipal create(User user) {
@@ -42,6 +46,7 @@ public class UserPrincipal implements OAuth2User, UserDetails {
                 user.getEmail(),
                 user.getName(),
                 user.getPassword() != null ? user.getPassword() : "",
+                user.getImageUrl(),
                 authorities
         );
     }

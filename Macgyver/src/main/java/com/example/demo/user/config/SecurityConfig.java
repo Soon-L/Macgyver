@@ -15,6 +15,7 @@ import com.example.demo.login.security.JwtAuthenticationFilter;
 import com.example.demo.login.security.OAuth2AuthenticationFailureHandler;
 import com.example.demo.login.security.OAuth2AuthenticationSuccessHandler;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @Configuration
@@ -52,11 +53,19 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/")
             )
             .exceptionHandling(ex -> ex
-                .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
-            );
+            .authenticationEntryPoint((request, response, authException) -> {
+                if (request.getRequestURI().startsWith("/api")) {
+                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                    response.setContentType("application/json");
+                    response.getWriter().write("{\"error\": \"Unauthorized\"}");
+                } else {
+                    response.sendRedirect("/login");
+                }
+            })
+        );
 
-        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+    http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
-        return http.build();
+    return http.build();
     }
 }

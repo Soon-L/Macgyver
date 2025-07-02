@@ -97,4 +97,9 @@ public class JwtTokenProvider {
 
     public record TokenInfo(String token, long expiryDate, long tokenValidity) {
     }
+
+    public TokenInfo generateAccessToken(UserPrincipal userPrincipal) {
+
+        return createToken(userPrincipal.getId(), 3600 * 1000L);
+    }
 }

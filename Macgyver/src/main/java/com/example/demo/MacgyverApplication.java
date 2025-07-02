@@ -8,12 +8,22 @@ import org.springframework.context.annotation.Bean;
 import com.example.demo.service.CarpoorService;
 import com.example.demo.service.ForeignCarService;
 import com.example.demo.service.KoreaCarService;
+import io.github.cdimascio.dotenv.Dotenv;
 
 
 @SpringBootApplication
+
 public class MacgyverApplication {
 
 	public static void main(String[] args) {
+		// .env 파일 로드
+        Dotenv dotenv = Dotenv.configure()
+			.directory("Macgyver")
+            .ignoreIfMissing() // .env 파일이 없어도 예외 발생 안 함
+            .load();
+
+        // .env의 키-값 쌍을 시스템 속성으로 설정
+        dotenv.entries().forEach(entry -> System.setProperty(entry.getKey(), entry.getValue()));
 		SpringApplication.run(MacgyverApplication.class, args);
 	}
 

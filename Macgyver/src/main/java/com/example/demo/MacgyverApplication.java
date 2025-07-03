@@ -18,7 +18,7 @@ public class MacgyverApplication {
 	public static void main(String[] args) {
 		// .env 파일 로드
         Dotenv dotenv = Dotenv.configure()
-			.directory("Macgyver")
+			.directory("./")
             .ignoreIfMissing() // .env 파일이 없어도 예외 발생 안 함
             .load();
 

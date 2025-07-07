@@ -11,16 +11,6 @@ import com.example.demo.login.security.UserPrincipal;
 @RestController
 public class AuthController {
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping("/logout")
-    public String logout() {
-        return "redirect:/login?logout";
-    }
-    
     @GetMapping("/api/me")
     public ResponseEntity<UserInfoResponse> getUserInfo(@AuthenticationPrincipal UserPrincipal user) {
         UserInfoResponse userInfo = new UserInfoResponse(

@@ -4,8 +4,8 @@ spring:
       client:
         registration:
           kakao:
-            client-id: ENC(bwtnbze7/nq5/GW9RbmIYxC83DBUEQnZpflNVe/2vQe3aJU6q16cfokHkDxp/Req)
-            client-secret: ENC(bXQhRZycpek5YlGblJM2puLwShwSOBye3WZoMRLRjTWUU+NvLqvD+FdSVbR38/0Z)
+            client-id: ${CLIENT_ID}
+            client-secret: ${CLIENT_SECRET}
             redirect-uri: http://localhost:8080/login/oauth2/code/kakao
             client-authentication-method: client_secret_post
             authorization-grant-type: authorization_code
